@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -9,7 +10,7 @@
     <body>
         <nav class="level is-mobile p-5">
             <div class="level-left">
-                <img src="C:\Users\devfe\Desktop\pagetome\templates\pagetome.PNG" width="150px" alt="logo">
+                <img src="{% static 'pagetome.PNG' %}" width="150px" alt="logo">
             </div>
             <div class="level-right">
                 <p class="level-item">
@@ -44,7 +45,7 @@
                         </div>
                     </div>
                     <div class="cell is-flex is-justify-content-right is-align-items-center is-hidden-mobile">
-                        <img src="C:\Users\devfe\Desktop\pagetome\templates\000000 000000-banner.png" style="max-height: 40vh;">
+                        <img src="{% static '000000 000000-banner.png' %}" style="max-height: 40vh;">
                     </div>
                 </div>
             </div>
@@ -61,7 +62,7 @@
                         <div class="card">
                             <div class="card-image">
                                 <figure class="image is-4by3">
-                                    <img src="C:\Users\devfe\Desktop\pagetome\templates\image.png" alt="Placeholder image"/>
+                                    <img src="{% static 'image.png' %}" alt="Placeholder image"/>
                                 </figure>
                             </div>
                             <footer class="card-footer">
@@ -73,7 +74,7 @@
                         <div class="card">
                             <div class="card-image">
                                 <figure class="image is-4by3">
-                                    <img src="C:\Users\devfe\Desktop\pagetome\templates\image.png" alt="Placeholder image"/>
+                                    <img src="{% static 'image.png' %}" alt="Placeholder image"/>
                                 </figure>
                             </div>
                             <footer class="card-footer">
@@ -90,20 +91,20 @@
         </div>
         <section class="section pr-0 pl-0">
             <section class="marquee-container">
-                <img class="marquee-item" src="C:\Users\devfe\Desktop\pagetome\templates\000000 000000-portrait.png" alt="Placeholder image"/>
-                <img class="marquee-item" src="C:\Users\devfe\Desktop\pagetome\templates\000000 000000-portrait.png" alt="Placeholder image"/>
-                <img class="marquee-item" src="C:\Users\devfe\Desktop\pagetome\templates\000000 000000-portrait.png" alt="Placeholder image"/>
-                <img class="marquee-item" src="C:\Users\devfe\Desktop\pagetome\templates\000000 000000-portrait.png" alt="Placeholder image"/>
-                <img class="marquee-item" src="C:\Users\devfe\Desktop\pagetome\templates\000000 000000-portrait.png" alt="Placeholder image"/>
-                <img class="marquee-item" src="C:\Users\devfe\Desktop\pagetome\templates\000000 000000-portrait.png" alt="Placeholder image"/>
-                <img class="marquee-item" src="C:\Users\devfe\Desktop\pagetome\templates\000000 000000-portrait.png" alt="Placeholder image"/>
-                <img class="marquee-item" src="C:\Users\devfe\Desktop\pagetome\templates\000000 000000-portrait.png" alt="Placeholder image"/>
-                <img class="marquee-item" src="C:\Users\devfe\Desktop\pagetome\templates\000000 000000-portrait.png" alt="Placeholder image"/>
-                <img class="marquee-item" src="C:\Users\devfe\Desktop\pagetome\templates\000000 000000-portrait.png" alt="Placeholder image"/>
-                <img class="marquee-item" src="C:\Users\devfe\Desktop\pagetome\templates\000000 000000-portrait.png" alt="Placeholder image"/>
-                <img class="marquee-item" src="C:\Users\devfe\Desktop\pagetome\templates\000000 000000-portrait.png" alt="Placeholder image"/>
-                <img class="marquee-item" src="C:\Users\devfe\Desktop\pagetome\templates\000000 000000-portrait.png" alt="Placeholder image"/>
-                <img class="marquee-item" src="C:\Users\devfe\Desktop\pagetome\templates\000000 000000-portrait.png" alt="Placeholder image"/>
+                <img class="marquee-item" src="{% static '000000 000000-portrait.png' %}" alt="Placeholder image"/>
+                <img class="marquee-item" src="{% static '000000 000000-portrait.png' %}" alt="Placeholder image"/>
+                <img class="marquee-item" src="{% static '000000 000000-portrait.png' %}" alt="Placeholder image"/>
+                <img class="marquee-item" src="{% static '000000 000000-portrait.png' %}" alt="Placeholder image"/>
+                <img class="marquee-item" src="{% static '000000 000000-portrait.png' %}" alt="Placeholder image"/>
+                <img class="marquee-item" src="{% static '000000 000000-portrait.png' %}" alt="Placeholder image"/>
+                <img class="marquee-item" src="{% static '000000 000000-portrait.png' %}" alt="Placeholder image"/>
+                <img class="marquee-item" src="{% static '000000 000000-portrait.png' %}" alt="Placeholder image"/>
+                <img class="marquee-item" src="{% static '000000 000000-portrait.png' %}" alt="Placeholder image"/>
+                <img class="marquee-item" src="{% static '000000 000000-portrait.png' %}" alt="Placeholder image"/>
+                <img class="marquee-item" src="{% static '000000 000000-portrait.png' %}" alt="Placeholder image"/>
+                <img class="marquee-item" src="{% static '000000 000000-portrait.png' %}" alt="Placeholder image"/>
+                <img class="marquee-item" src="{% static '000000 000000-portrait.png' %}" alt="Placeholder image"/>
+                <img class="marquee-item" src="{% static '000000 000000-portrait.png' %}" alt="Placeholder image"/>
             </section>
             <style>
                 .marquee-container {
@@ -158,7 +159,7 @@
               </div>
             </div>
             <div class="content has-text-centered">
-              <p class="py-4">© 2024 <span class="has-text-white">pageto.me</span> by <a target="blank" href="https://blackstackhub.com" class="has-text-info">Black Stack Hub</a></p>
+              <p class="py-4">© 2025 <span class="has-text-white">pageto.me</span> by <a target="blank" href="https://github.com/devfemibadmus" class="has-text-info">Dev Femi Badmus</a></p>
             </div>
         </footer>
         <script>
@@ -167,6 +168,6 @@
                 document.getElementById("username").textContent = username;
                 document.querySelector("a").href = `https://pageto.me/${username}`;
             });            
-        </script>
+        </script>           
     </body>
 </html>
