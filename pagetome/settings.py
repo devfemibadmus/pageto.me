@@ -1,3 +1,4 @@
+from google.oauth2 import service_account
 from pathlib import Path
 import os
 
@@ -20,6 +21,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -85,6 +87,8 @@ USE_I18N = True
 
 USE_TZ = True
 
+MEDIA_URL = "https://storage.googleapis.com/pagetome/"
+GS_CREDENTIALS = service_account.Credentials.from_service_account_file('service-account.json')
 
 STATIC_URL = '/static/'
 STATIC_ROOT = 'statics'
