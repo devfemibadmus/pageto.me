@@ -1,34 +1,29 @@
-from datetime import date
 from django.db import models
-from django.utils import timezone
-from django.utils.crypto import get_random_string
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import User
 
-class templates(models.Model):
-    file_name = models.CharField(max_length=50)
-    background = models.ImageField(upload_to="templates/background/")
+class Template(models.Model):
+    name = models.CharField(max_length=100)
+    preview_image = models.ImageField(upload_to="templates/")
 
-class User(AbstractUser):
-    def last_time_default():
-        return [0, 0, date.today().strftime("%Y-%m-%d")]
-    is_verified = models.BooleanField(default=False)
-    minWithdraw = models.IntegerField(default=100)
-    documentSubmitted = models.BooleanField(default=False)
-    referral = models.ForeignKey('self', null=True, blank=True, on_delete=models.SET_NULL, related_name='referred_users')
+class TemplateRow(models.Model):
+    template = models.ForeignKey(Template, on_delete=models.CASCADE, related_name="rows")
+    image = models.ImageField(upload_to="template_rows/", null=True, blank=True)
+    title = models.CharField(max_length=100)
+    link = models.URLField()
+    position = models.PositiveIntegerField()
 
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['password'] 
-    
-    def __str__(self):
-        return f"{self.email}"
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    selected_template = models.ForeignKey(Template, on_delete=models.SET_NULL, null=True)
 
-    def save(self, *args, **kwargs):
-        if not self.username:
-            self.username = self.email
-        super().save(*args, **kwargs)
-
-class Pages(models.Model):
-    template = models.IntegerField()
+class Link(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    template_row = models.ForeignKey(TemplateRow, on_delete=models.CASCADE, related_name="links")
+    url = models.URLField()
+    title = models.CharField(max_length=100)
+    views = models.PositiveIntegerField(default=0)
 
-
+class LinkAnalytics(models.Model):
+    link = models.ForeignKey(Link, on_delete=models.CASCADE, related_name="analytics")
+    timestamp = models.DateTimeField(auto_now_add=True)
+    source = models.CharField(max_length=100)
