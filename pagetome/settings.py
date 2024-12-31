@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'storages',
+    'app',
 ]
 
 MIDDLEWARE = [
@@ -79,6 +80,20 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+STORAGES = {
+    "default": {
+        "BACKEND": "storages.backends.gcloud.GoogleCloudStorage",
+        "OPTIONS": {
+            "bucket_name": "pagetome",
+            "credentials": service_account.Credentials.from_service_account_file('service-account.json'),
+        },
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    },
+}
+
+
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -87,8 +102,10 @@ USE_I18N = True
 
 USE_TZ = True
 
+GS_DEFAULT_ACL = None
+GS_BUCKET_NAME = "pagetome"
+GS_QUERYSTRING_AUTH = False
 MEDIA_URL = "https://storage.googleapis.com/pagetome/"
-GS_CREDENTIALS = service_account.Credentials.from_service_account_file('service-account.json')
 
 STATIC_URL = '/static/'
 STATIC_ROOT = 'statics'
