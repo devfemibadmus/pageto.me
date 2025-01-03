@@ -1,0 +1,111 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}{% endblock %} || Pageto.me</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">        
+    </head>
+    <body>
+        <div id="delete-account-modal" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-content" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+              <div class="box has-text-centered">
+                <p>Are you sure you want to delete your account?</p>
+                <div class="buttons is-centered pt-3">
+                  <button class="button is-danger">Yes, Delete</button>
+                  <button class="button is-light">Cancel</button>
+                </div>
+              </div>
+            </div>
+            <button class="modal-close is-large" aria-label="close"></button>
+        </div>          
+        <nav class="level is-mobile p-5">
+            <div class="level-left">
+                <a href="/">
+                    <img src="{% static 'pagetome.PNG' %}" width="150px" alt="logo">
+                </a>
+            </div>
+            <div class="level-right">
+                <p class="level-item">
+                    <h3 class="title is-6">
+                        {% if request.resolver_match.view_name == "account" %}
+                        <a href="/logout" class="has-text-info">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e8eaed"><path d="M180-120q-24 0-42-18t-18-42v-600q0-24 18-42t42-18h299v60H180v600h299v60H180Zm486-185-43-43 102-102H360v-60h363L621-612l43-43 176 176-174 174Z"/></svg>
+                        </a>
+                        <button class="has-text-info js-modal-trigger" data-target="delete-account-modal">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#FF6685"><path d="M261-120q-24.75 0-42.37-17.63Q201-155.25 201-180v-570h-41v-60h188v-30h264v30h188v60h-41v570q0 24-18 42t-42 18H261Zm438-630H261v570h438v-570ZM367-266h60v-399h-60v399Zm166 0h60v-399h-60v399ZM261-750v570-570Z"/></svg>
+                        </button>
+                        {% else %}
+                        {% if request.resolver_match.view_name == "home" or request.resolver_match.view_name == "analytics" %}
+                        <a href="/templates" class="has-text-info">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e8eaed"><path d="M510-570v-270h330v270H510ZM120-450v-390h330v390H120Zm390 330v-390h330v390H510Zm-390 0v-270h330v270H120Zm60-390h210v-270H180v270Zm390 330h210v-270H570v270Zm0-450h210v-150H570v150ZM180-180h210v-150H180v150Zm210-330Zm180-120Zm0 180ZM390-330Z"/></svg>
+                        </a>
+                        {% else %}
+                        <a href="/analytics" class="has-text-info ">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e8eaed"><path d="M120-120v-76l60-60v136h-60Zm165 0v-236l60-60v296h-60Zm165 0v-296l60 61v235h-60Zm165 0v-235l60-60v295h-60Zm165 0v-396l60-60v456h-60ZM120-356v-85l280-278 160 160 280-281v85L560-474 400-634 120-356Z"/></svg>
+                        </a>
+                        {% endif %}
+                        <a href="/account" class="has-text-info ">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e8eaed"><path d="M222-255q63-44 125-67.5T480-346q71 0 133.5 23.5T739-255q44-54 62.5-109T820-480q0-145-97.5-242.5T480-820q-145 0-242.5 97.5T140-480q0 61 19 116t63 109Zm257.81-195q-57.81 0-97.31-39.69-39.5-39.68-39.5-97.5 0-57.81 39.69-97.31 39.68-39.5 97.5-39.5 57.81 0 97.31 39.69 39.5 39.68 39.5 97.5 0 57.81-39.69 97.31-39.68 39.5-97.5 39.5Zm.66 370Q398-80 325-111.5t-127.5-86q-54.5-54.5-86-127.27Q80-397.53 80-480.27 80-563 111.5-635.5q31.5-72.5 86-127t127.27-86q72.76-31.5 155.5-31.5 82.73 0 155.23 31.5 72.5 31.5 127 86t86 127.03q31.5 72.53 31.5 155T848.5-325q-31.5 73-86 127.5t-127.03 86Q562.94-80 480.47-80Zm-.47-60q55 0 107.5-16T691-212q-51-36-104-55t-107-19q-54 0-107 19t-104 55q51 40 103.5 56T480-140Zm0-370q34 0 55.5-21.5T557-587q0-34-21.5-55.5T480-664q-34 0-55.5 21.5T403-587q0 34 21.5 55.5T480-510Zm0-77Zm0 374Z"/></svg>
+                        </a>
+                        {% endif %}
+                    </h3>
+                </p>
+            </div>
+        </nav>
+        <section class="section">
+            <div class="container is-max-desktop">
+                <div class="grid">
+                    <div class="cell is-flex is-justify-content-left is-align-items-center">
+                        <div>
+                            <h1 class="title is-1 is-uppercase">Launch your <br class="is-hidden-tablet-only"> free link in bio!</h1>
+                            <form class="columns is-mobile">
+                                <div class="column is-8">
+                                    <div class="control">
+                                        <input class="input is-large" type="text" placeholder="username" />
+                                        <a href="https://pageto.me/username" target="blank" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: inline-block; max-width: 200px;" class="has-text-warning">pageto.me/<span id="username">username</span></a>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <button class="button is-large">Claim</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="cell is-flex is-justify-content-right is-align-items-center is-hidden-mobile">
+                        <img src="{% static '000000 000000-banner.png' %}" style="max-height: 40vh;">
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% block content %}
+        {% endblock %}        
+        <footer class="footer pt-5 mt-5">
+            <div class="container content">
+                <div class="is-flex is-justify-content-space-between">
+                  <a href="/templates" class="has-text-grey-light">Templates</a>
+                  <a href="/demo" class="has-text-grey-light">Demo</a>
+                  <a href="/account" class="has-text-grey-light">Account</a>
+                </div>
+            </div>
+            <div class="container content">          
+              <div class="content mt-4 is-flex is-justify-content-space-between">
+                <details class="mb-2">
+                  <summary class="has-text-white">Account Required?</summary>
+                  <p class="pl-4">Yes, creating an account allows you to manage your links, customize your page, and access analytics.</p>
+                </details>
+                <details class="mb-2 pl-4">
+                  <summary class="has-text-white">Track Link Performance?</summary>
+                  <p class="pl-4">We provide basic analytics to track link clicks and visitor activity, helping you understand your audience better.</p>
+                </details>
+              </div>
+            </div>
+            <div class="content has-text-centered">
+              <p class="py-4">© 2025 <span class="has-text-white">pageto.me</span> by <a target="blank" href="https://github.com/devfemibadmus" class="has-text-info">Dev Femi Badmus</a></p>
+            </div>
+        </footer>
+        <script src="/static/base.js"></script>
+    </body>
+</html>
