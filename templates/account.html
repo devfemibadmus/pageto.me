@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Account{% endblock %}
+
+{% block content %}
+<section class="section">
+    <div class="container is-max-tablet has-text-centered p-5">
+        <p class="title is-2 is-uppercase pb-5 has-text-weight-bold">Your <span class="has-text-info-45">pageto.me</span></p>
+    </div>
+    <div class="container centered">
+        <div class="fixed-grid has-1-cols-mobile">
+            <div class="grid">
+                <div class="cell">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="{% static 'image.png' %}" alt="Placeholder image"/>
+                            </figure>
+                        </div>
+                        <footer class="card-footer">
+                            <a href="#" class="card-footer-item">Edit</a>
+                            <a href="#" class="card-footer-item">Delete</a>
+                            <a href="#" class="card-footer-item">analysis</a>
+                        </footer>
+                    </div>
+                </div>
+                <div class="cell">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="{% static 'image.png' %}" alt="Placeholder image"/>
+                            </figure>
+                        </div>
+                        <footer class="card-footer">
+                            <a href="#" class="card-footer-item">Edit</a>
+                            <a href="#" class="card-footer-item">Delete</a>
+                            <a href="#" class="card-footer-item">analysis</a>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
